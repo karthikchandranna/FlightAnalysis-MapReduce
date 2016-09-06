@@ -1,0 +1,44 @@
+The tar file has the following contents:
+
+1) JAR file of the single threaded application
+2) JAR file of the multi threaded application
+3) JAR file of the pseudo-distributed implementation of the application
+4) JAR file of the cluster implementation (AWS)
+5) A Makefile that contains the targets to run the above applications.
+6) An R Graph that compares the execution times of the above implementations.
+
+
+Execution Instructions:
+
+Step 1: Change Directory (cd) to the path of the Makefile.
+
+Step 2:	
+	a). Single threaded application usage:
+		java jar Karthik_Sujith_A3.jar <path of input folder> <mean or median> <number of files>
+
+	b). Multi-threaded application usage:
+		java jar Karthik_Sujith_A3_Multi.jar <path of input folder> <mean or median> <number of files>
+
+	c). Pseudo distributed mode:
+		hadoop fs -mkdir <new_directory_name>
+        	hadoop fs -put <path to input dataset> <new_directory_name>
+        	hadoop jar <pseudo jar file given> <path to input dataset>/all <new output directory> <mean/median/fastMedian> <numberOfFiles>
+
+	d). AWS Clusters:
+		Follow the instructions in the makefile.
+
+Alternatively, you can run the targets in the makefile.
+
+
+[Note: Number of files is one 5,10,15,20,25]
+
+
+
+
+
+		
+
+
+
+
+

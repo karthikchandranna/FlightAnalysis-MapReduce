@@ -1,0 +1,13 @@
+
+INPUT = input
+OUTPUT = mr_output_a4_ks
+FINAL_OUTPUT = mr_final_output_a4_ks
+
+pseudo:
+	hadoop jar mr1.jar input/data $(OUTPUT)
+	hadoop fs -get $(OUTPUT) .
+	java -jar mrLink.jar 200 $(OUTPUT)
+	hadoop fs -put cheapest_airline.txt .
+	hadoop jar mr2.jar input/data $(FINAL_OUTPUT) cheapest_airline.txt
+	hadoop fs -getmerge $(FINAL_OUTPUT) results.txt
+	

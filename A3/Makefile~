@@ -1,0 +1,60 @@
+DIR = karthik_sujith
+INPUT = all
+OUTPUT = output_make
+
+JARFILE_SINGLE = Karthik_Sujith_A3.jar
+JARFILE_MULTI = Karthik_Sujith_A3_Multi.jar
+JARFILE_PSEUDO = karthik_sujith.jar
+JARFILE_AWS = karthik_sujith_aws.jar
+
+single:
+	java -jar $(JARFILE_SINGLE) $(INPUT) mean 5
+	java -jar $(JARFILE_SINGLE) $(INPUT) mean 10
+	java -jar $(JARFILE_SINGLE) $(INPUT) mean 15
+	java -jar $(JARFILE_SINGLE) $(INPUT) mean 20
+	java -jar $(JARFILE_SINGLE) $(INPUT) mean 25
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 5
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 10
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 15
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 20
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 25
+
+multi:
+	java -jar $(JARFILE_MULTI) $(INPUT) mean 5
+	java -jar $(JARFILE_MULTI) $(INPUT) mean 10
+	java -jar $(JARFILE_MULTI) $(INPUT) mean 15
+	java -jar $(JARFILE_MULTI) $(INPUT) mean 20
+	java -jar $(JARFILE_MULTI) $(INPUT) mean 25
+	java -jar $(JARFILE_MULT) $(INPUT) median 5
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 10
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 15
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 20
+	java -jar $(JARFILE_SINGLE) $(INPUT) median 25
+
+	
+
+
+pseudo:
+	hadoop fs -mkdir $(DIR)
+	hadoop fs -put $(INPUT) $(DIR)
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) mean 5
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) mean 10
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) mean 15
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) mean 20
+    	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) mean 25
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) median 5
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) median 10
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) median 15
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) median 20
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) median 25
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) fastMedian 5
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) fastMedian 10
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) fastMedian 15
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) fastMedian 20
+	hadoop jar $(JARFILE) $(DIR)/all $(OUTPUT) fastMedian 25
+
+
+
+
+
+
